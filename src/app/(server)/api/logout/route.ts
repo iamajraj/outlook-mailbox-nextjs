@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
+import { BASE_URL } from '../../../../config';
 
 export async function GET(request: Request) {
-  const response = NextResponse.redirect(new URL('/login', request.url), {
+  const response = NextResponse.redirect(new URL('/login', BASE_URL), {
     status: 302,
   });
 

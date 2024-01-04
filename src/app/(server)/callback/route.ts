@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
 import qs from 'qs';
+import { BASE_URL } from '../../../config';
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -42,7 +43,7 @@ export async function GET(request: Request) {
     const responseData = await tokenResponse.json();
     const accessToken = responseData.access_token;
 
-    const response = NextResponse.redirect(new URL('/', request.url), {
+    const response = NextResponse.redirect(new URL('/', BASE_URL), {
       status: 302,
     });
 
