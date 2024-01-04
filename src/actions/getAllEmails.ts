@@ -37,7 +37,7 @@ export default async function getAllEmails(): Promise<EmailResponse> {
     const graphData = await graphResponse.json();
     // Send the inbox emails as JSON
     return {
-      success: false,
+      success: true,
       data: graphData.value,
     };
   } catch (error) {

@@ -18,6 +18,7 @@ export async function GET(request: Request) {
   const code = url.searchParams.get('code');
 
   const tokenUrl = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`;
+
   const tokenData = {
     client_id: clientId,
     client_secret: clientSecret,
@@ -48,7 +49,7 @@ export async function GET(request: Request) {
     response.cookies.set('accessToken', accessToken, {
       path: '/',
       sameSite: 'strict',
-      secure: false,
+      secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
       maxAge: 3600,
     });
